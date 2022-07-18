@@ -1,1 +1,0 @@
-# spring-hexagonal-archetype

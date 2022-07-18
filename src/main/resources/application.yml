@@ -1,0 +1,11 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: blog
+
+logging:
+  level:
+    org.springframework.web: INFO
+    org.hibernate: ERROR
