@@ -11,17 +11,16 @@ import org.springframework.transaction.annotation.Transactional
 @Component
 class ArticleDao(private val db: ArticleJpaRepository) : ArticleRepository {
 
-    override fun findAllByOrderByAddedAtDesc(): List<Article> {
-        return db.findAllByOrderByAddedAtDesc().asSequence()
+    override fun findAllByOrderByAddedAtDesc(): List<Article> =
+        db.findAllByOrderByAddedAtDesc()
+            .asSequence()
             .map { articleJpaToArticle(it) }
             .toList()
-    }
 
-    override fun findById(id: Long): Article? {
-        return db.findByIdAndActiveTrue(id)
+    override fun findById(id: Long): Article? =
+        db.findByIdAndActiveTrue(id)
             .map { articleJpaToArticle(it) }
             .orElse(null)
-    }
 
     @Transactional
     override fun create(article: Article): ArticleId {
